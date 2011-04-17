@@ -67,7 +67,7 @@ def Check():
     #Init FPS System
     Video.FPS.Init()
 
-    #Update Window Caption To Current Ver
+    #Update Window Caption
     pygame.display.set_caption(str("PyOnline Update Manager"))
 
     #Start Update Thread
@@ -83,7 +83,7 @@ def Check():
                     #Stop PyGame
                     pygame.quit()
 
-                    #Exit Completly
+                    #Exit Completely
                     sys.exit(0)
 
         #Update Display
@@ -111,7 +111,7 @@ def Check():
     elif Platform_Data == "Linux": #TODO: What is os.uname[0] value under *nix systems
         pass
 
-#Runs the actual updating procress (This is ran in its own thread)
+#Runs the actual updating process (This is ran in its own thread)
 def Run_Update():
     global Update_Tmp_Path
     global Root_Path_From_Update_Tmp
@@ -309,7 +309,7 @@ def Run_Update():
                 #File is downloaded, end download loop
                 break
 
-            #Update varibles
+            #Update variables
             File_Remote_Size_dl += Block_SZ
 
             #Write file data locally
@@ -430,7 +430,7 @@ def Write(text, x=0, update_line=True, black=False):
     else:
         Info_Font = pygame.font.Font("data/fonts/VeraMoBd.ttf", 10)
 
-    #Display Loding Information
+    #Display Loading Information
     if black != True:
         InfoSurf = Info_Font.render(str(text), True, (255,255,255))
     else:
