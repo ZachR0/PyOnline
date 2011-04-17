@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="250" height="250" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="Test_Tileset" tilewidth="32" tileheight="32">
+  <image source="Test_Tileset.png" trans="ff00ff" width="480" height="1216"/>
+ </tileset>
+ <tileset firstgid="571" name="Test_Tileset" tilewidth="32" tileheight="32">
+  <image source="Test_Tileset.png" trans="ff00ff" width="480" height="1216"/>
+ </tileset>
+ <layer name="Ground" width="250" height="250">
+  <data encoding="base64" compression="zlib">
+   eJzt3L1qG1EUhVE54DqVi6SNi6TJEzjp8/4PkdeIIAxjBhlZks89V3vWgo00lRDMB6PfwwHYg8cH+8jBjLq7GL2n4543e9I54bq7G72l6+fN/W86J1h3dx2dL32/7l3nJOvurnJ/D/838jFhRt0t6hzqdbeoc6g3Qxs6h1oztKFzqDVDGzqHWjO0oXOoNUMbOodaM7Rx6Zbvt2xvZ3guMKO32kiaztk7neucfKPO/9HN6RxWOtc5+XSuc/LpXOfk07nOyadznZNvZAMjp3NYdfeoc6jX3aPOoV53jzqHet096hzqdfeoc6jX3eOp35decqtzOK+786rpHFbdPeoc6nX3uG3yo35PrnNYdTeuc6jX3bjOoV5349sm33oPXedwve7Gt02e+t9WncNtuht/b5M6h+t1N65zqNfduM6hXnfjOod63Y1f03nF53A6J1l34zqHet2N6xzqdTf+3s7vZTCj7i50DvVGNjzbNbbO2Qud65x8Otc5+UZ23t2gztkrneucfDrXOfl0rnPy6Vzn5NO5zsmnc52TT+c6J5/OdU4+neucfDrXOfl0rnO41Zfjuf/V+Q/Rvh8b/6FziPPzYd1yzb4cAxlOvT5fjn9rHSLoHPLpHLK9bNrWOeR53fmpz851DvdP55Dv5cz3xXQO90/nkE/nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMC9+vOpfpf6PGCwJzqHfDqHfDqHfDqHfDqHfDqHfDqHfDqHfDqHfLc2/OvMOjp/PDOdszc6h3w6h3w6h3zeh4N8OgcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGB2/wAUIpEH
+  </data>
+ </layer>
+ <layer name="Primary Non-Collision" width="250" height="250">
+  <data encoding="base64" compression="zlib">
+   eJzt3MFNwzAYgNGESmyQDXJlI2ZlAm4sAVsAQpWiYEPrurHz5z0pKg2U5PLJrmsYBoA4XsfWdwAAAHw7Zebm71/nP8zb4RBeWt8AAAAAAAAAAAAA3GAah2Eefx7hiKZxm6PV9c7XXD7C0czjNseW18t1Pq/Ow1EcaTzXOUdlPIf4jOcQn/Ec2COdQ3w6h/h0DvHpHOLTOcSnc4hP59CXGvtgUr8z9Vzn0Mat+25SdA59+W9sLnmNzqEvJe3pHPZli85nnUNTqfbW62258TlH59CXVHvr9bb1z+gc9iXXsPEc4li3N+scwint/Jp9NDqHtko6v3Yfjc6hrZLOS6+hc2hD5xDfX3NsnUP/Sv72LDee1/g/zzqH+qYL1ssunbfXOHQO9ZV0tZxjr7+ucQB13dI5sA86h/hSe9e9h4ZYUmts3kNDLLm1dCAOnUN8Oof4dA7x6Rzi0znEp3OIT+cQn84hPp0DAECfnszNAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgqeeH38+Xx/Jc6rW57wEAAAAA9/V4an0HAADA2fJz89Tn8EAf7tXjm84BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHbhE3BqULs=
+  </data>
+ </layer>
+ <layer name="Secondary Non-Collision" width="250" height="250">
+  <data encoding="base64" compression="zlib">
+   eJztwQEBAAAAgiD/r25IQAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfBvQvQAB
+  </data>
+ </layer>
+ <layer name="Collision" width="250" height="250">
+  <data encoding="base64" compression="zlib">
+   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
+  </data>
+ </layer>
+ <objectgroup name="Spawn Point" width="250" height="250">
+  <object name="Spawn Point" type="Spawn_Point" x="317" y="254" width="34" height="33"/>
+ </objectgroup>
+ <objectgroup color="#ff0036" name="Sign Triggers" width="250" height="250">
+  <object name="Welcome Sign" type="Sign" x="258" y="387" width="26" height="33">
+   <properties>
+    <property name="Message" value="Welcome to PyOnline!"/>
+   </properties>
+  </object>
+  <object name="Long String Sign Test" type="Sign" x="1411" y="388" width="24" height="36">
+   <properties>
+    <property name="Message" value="This is a random long string of test. Blah blah dialog test. &#13;The quick brown fox jumps over the lazy dog."/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup color="#ffa000" name="House Triggers" width="250" height="250">
+  <object name="Island House Enterance" type="House_Entrance" x="705" y="2078" width="32" height="44">
+   <properties>
+    <property name="Direction" value="Up"/>
+    <property name="Port Direction" value="Up"/>
+    <property name="Port Location" value="Island House Exit"/>
+   </properties>
+  </object>
+  <object name="Island House Exit" type="House_Exit" x="225" y="3532" width="152" height="87">
+   <properties>
+    <property name="Direction" value="Down"/>
+    <property name="Port Direction" value="Down"/>
+    <property name="Port Location" value="Island House Enterance"/>
+   </properties>
+  </object>
+  <object name="Test House Exit" type="House_Exit" x="1410" y="3536" width="156" height="79">
+   <properties>
+    <property name="Direction" value="Down"/>
+    <property name="Port Direction" value="Down"/>
+    <property name="Port Location" value="Test House Entrance"/>
+   </properties>
+  </object>
+  <object name="Test House Entrance" type="House_Entrance" x="157" y="237" width="36" height="36">
+   <properties>
+    <property name="Direction" value="Up"/>
+    <property name="Port Direction" value="Up"/>
+    <property name="Port Location" value="Test House Exit"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup color="#0000ff" name="Zones" width="250" height="250" visible="0">
+  <object name="Main Zone" type="Zone" x="74" y="220" width="1568" height="293">
+   <properties>
+    <property name="Zone Name" value="Main Zone"/>
+   </properties>
+  </object>
+  <object name="House Zone" type="Zone" x="1669" y="33" width="1050" height="482">
+   <properties>
+    <property name="Zone Name" value="House Zone"/>
+   </properties>
+  </object>
+  <object name="Wooded Path Section1" type="Zone" x="1763" y="542" width="92" height="815">
+   <properties>
+    <property name="Zone Name" value="Wooded Path Section1"/>
+   </properties>
+  </object>
+  <object name="Wooded Path Section2" type="Zone" x="1376" y="1280" width="369" height="95">
+   <properties>
+    <property name="Zone Name" value="Wooded Path Section2"/>
+   </properties>
+  </object>
+  <object name="Wooded Path Section3" type="Zone" x="1088" y="990" width="386" height="272">
+   <properties>
+    <property name="Zone Name" value="Wooded Path Section3"/>
+   </properties>
+  </object>
+  <object name="Wooded Path Section4" type="Zone" x="1090" y="1281" width="94" height="253">
+   <properties>
+    <property name="Zone Name" value="Wooded Path Section4"/>
+   </properties>
+  </object>
+  <object name="Wooded Path Section5" type="Zone" x="801" y="1443" width="275" height="83">
+   <properties>
+    <property name="Zone Name" value="Wooded Path Section5"/>
+   </properties>
+  </object>
+  <object name="Wooded Path Section6" type="Zone" x="800" y="1537" width="93" height="364">
+   <properties>
+    <property name="Zone Name" value="Wooded Path Section6"/>
+   </properties>
+  </object>
+  <object name="Island Bridge" type="Zone" x="811" y="1915" width="41" height="64">
+   <properties>
+    <property name="Zone Name" value="Island Bridge"/>
+   </properties>
+  </object>
+  <object name="Island" type="Zone" x="671" y="1988" width="295" height="336">
+   <properties>
+    <property name="Zone Name" value="Island"/>
+   </properties>
+  </object>
+  <object name="Island House" type="Zone" x="35" y="3043" width="797" height="521">
+   <properties>
+    <property name="Zone Name" value="Island House"/>
+   </properties>
+  </object>
+  <object name="Test House" type="Zone" x="1218" y="3041" width="798" height="512">
+   <properties>
+    <property name="Zone Name" value="Test House"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

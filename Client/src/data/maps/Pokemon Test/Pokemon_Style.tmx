@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="250" height="250" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="Pokemon" tilewidth="32" tileheight="32">
+  <image source="Pokemon.png" trans="ffffff" width="256" height="9536"/>
+ </tileset>
+ <tileset firstgid="2385" name="General_Pokemon" tilewidth="32" tileheight="32">
+  <image source="General_Pokemon.png" width="256" height="11872"/>
+ </tileset>
+ <layer name="Ground" width="250" height="250">
+  <data encoding="base64" compression="zlib">
+   eJzt2jEKwkAQQNF40Vwgdtqmi1bqmV0hghZiVpwsGV7gldlJ8xcC0++6rgcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADg7YmaMZWzT8U5cAbw2RoN6hza0jnkp3PIT+eQ37PBfTEGGf404/G943yWewOWm1662RqdwzKX0sq1wmFu7Fj5XoSbziGEf23IT+eQn84hP51DfjqH/HQO+ekctqmmXZ3DNkV37m6A9mp23H/ZVR90Ds2tteOuc2indsfdPjoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADf3AFTrcfL
+  </data>
+ </layer>
+ <layer name="Primary Non-Collision" width="250" height="250">
+  <data encoding="base64" compression="zlib">
+   eJzt1TEKADEIBMB8xP9/8NqDXJkqzQUMOgOLrYWLYwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwDnPl1egtMhe4BKxBKqJZYqe08Pu9rP7p+fAX3pOJ9n/NDvQwS23r6cAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFQ1AY2gWjs=
+  </data>
+ </layer>
+ <layer name="Secondary Non-Collision" width="250" height="250">
+  <data encoding="base64" compression="zlib">
+   eJzt27EKgkAcwOGL1qZo9RV6w7bqPaMpmqK1oAIdCkulOPPv98FxiAfd8tNDKCUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPi9XcO8b7luqPO1HLNJgnAu91Hcx6G8fjcfG+4Pfa4sdE5AVeen8vrdfG64P/S5onMiKl7Gw1jP7g86J6K6zsd8dtc5EdV1Puazu86J6LXz4vPy8HRORP/ced3e2oxv6JyIdP5M50Sk82c6J6K+Op9MU1o3rNE5/Ea09/ly+t1v6hzy6vLu/qfnE9CeziE+nUN8Xb+5bbLuDshp1fcGAAAAAAAAAAhp3vcGgGyq/41ue90FMGSeIwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD53QBO48YR
+  </data>
+ </layer>
+ <layer name="Collision" width="250" height="250">
+  <data encoding="base64" compression="zlib">
+   eJzt2smPFGUAxuG2Z1xAPIB4cDu4cFDARMDEv9Xt4HZQNMHt4JaIXlxC4hIT1BgRXFhcAMVtRn370KZqrKa67Sp7+pvnSV5qpqmpGQi/oaZnBgMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWD5Hrmh/ufp603G86usbf+9ym/Q+Yas7kX2ZnWw5TnveMh/Xsx0+R1Cg09mZ7GzLcdrzlvk4slvnFOh8diG72HKc9rxlPo7onBKtVV5uuzffCvfuOqdE1c7b7s23wr27zilRtfO2e/OtcO+uc0q01vDYtpXBYHt2bbYju26l+/d7Yph75exkdmrYfM4XefzYjLt/zo9V55SoqfOdaWVXdn22O7uhh85Pp8kz2dns3ITOP57w+OXco3P4l6bOb0wrN2U3Z7dkt/bQ+fk0fCG7mP2kc+hVU+e3pZXbszuyO7M9PXT+Wxr+PfsjW9M59Kqp87vSyt3Z3mxftr+Hzvdlw1x3JVudcH2dQzeaOr83rRzIDmaHsvt66PzQFOfM0vlXOffr7Jvs2//w+WFM55SoqfON9vT+UTSbpfPvcu732Q/ZjzqHmmk6X5RZOv85517Kfsl+1TnUlNL5es79M/tr9DZzfJ2hc0q0mTv/fIafj7kybV+VXZ1do3Oo2cydT6vL5w90TolK6LxLOqdEOq/TOSUadX48G/3zHs5xrOriGouic0o0/v98W7Z9jmNVF9dYFJ1TonHnO7NdcxyrurjGouicEo0733gP/UZ+OZq9mb017Pa+feSB1cHgweyh7OHskdXe/ogz0TklmnTf/naCfCd7N3tv2O19+97s0XT9WPZ49kT2pM6hN+Pn4ar30KMO30/bH2QfZh8Nu71vP5g9la6fzg5nz2TP6hx60/R9tVGHx9P2J9mn2Wc9PBn+XLp+PnshezF7SefQm0V9//zldP1K9mr2Wva6zqE3fk6mTueUSOd1OqdEOq/TOSXSeZ3OKZHO63ROiXRep3NKpPM6nVMindfpnBLpvE7nlEjndTqnROeydftnp+b76wQAAHp0xNflUDydAwDA5ue+HQAAAID/y+i5qOrzUePX29Z07qS33/j4pPfdds2mc6b9mCddGwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWG5/Ayr1arw=
+  </data>
+ </layer>
+ <objectgroup name="Sign Triggers" width="250" height="250">
+  <object name="Pokemon Research Sign" type="Sign" x="5538" y="4541" width="28" height="42">
+   <properties>
+    <property name="Message" value="Wild Pokemon Research Center"/>
+   </properties>
+  </object>
+  <object name="Personal Mailbox" type="Sign" x="4932" y="4378" width="22" height="45">
+   <properties>
+    <property name="Message" value="It's rude to read other people's mail."/>
+   </properties>
+  </object>
+  <object name="Welcome Sign" type="Sign" x="4258" y="4416" width="28" height="42">
+   <properties>
+    <property name="Message" value="Welcome to PyOnline! Pretty nice looking map wouldn't 'ya say? Also, this is not going to be a Pokemon based game. This is just a fun test map."/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="Spawn Point" width="250" height="250">
+  <object name="Player Spawn" type="Spawn_Point" x="4414" y="4317" width="69" height="65"/>
+ </objectgroup>
+ <objectgroup name="Zones" width="250" height="250" visible="0">
+  <object name="Housing District" type="Zone" x="3968" y="4032" width="1217" height="603">
+   <properties>
+    <property name="Zone Name" value="Housing District"/>
+   </properties>
+  </object>
+  <object name="Research Area" type="Zone" x="5191" y="4034" width="983" height="1209">
+   <properties>
+    <property name="Zone Name" value="Wild Pokemon Research Area"/>
+   </properties>
+  </object>
+  <object name="Assistance District" type="Zone" x="3970" y="4642" width="1215" height="599">
+   <properties>
+    <property name="Zone Name" value="Assistance District"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

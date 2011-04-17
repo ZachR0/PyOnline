@@ -1,0 +1,16 @@
+#
+# Sprite Description Map - Inu
+#
+# Name;Offset X;Offset Y;Width;Height
+DOWN;0;0;25;31
+DOWN;25;0;25;31
+DOWN;50;0;25;31
+DOWN;75;0;25;31
+DOWN;100;0;25;31
+RIGHT;0;31;22;32
+RIGHT;22;31;22;32
+LEFT;48;31;22;32
+LEFT;72;31;22;32
+UP;0;62;22;32
+UP;48;62;22;32
+UP;48;62;22;32

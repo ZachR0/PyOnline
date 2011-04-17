@@ -1,0 +1,14 @@
+#
+# Sprite Description Map - Ash
+#
+# Name;Offset X;Offset Y;Width;Height
+DOWN;0;0;21;23
+DOWN;23;0;21;25
+DOWN;45;0;21;25
+RIGHT;67;0;22;24
+RIGHT;89;0;23;24
+UP;114;0;20;23
+UP;135;0;19;25
+UP;158;0;19;25
+LEFT;177;0;22;24
+LEFT;199;0;22;24
