@@ -52,7 +52,7 @@ def Run():
     #Setup Video
     Video.PyGame.SetVideo(800, 640, FS)
 
-    #Display Loding Information
+    #Display Loading Information
     InfoSurf = Debug_Font.render("Starting to load game content...", False, (255,255,255))
     Video.PyGame.Screen.blit(InfoSurf, (0,0)) #Render Text
     pygame.display.flip() #Update Display
@@ -65,7 +65,7 @@ def Run():
 
     #Only continue if a connection to the game server has been made
     if Networking.Client.isConnected:
-        #Display Loding Information
+        #Display Loading Information
         InfoSurf = Debug_Font.render("Loading World Map (This may take some time)...", False, (255,255,255))
         Video.PyGame.Screen.blit(InfoSurf, (0,15*1)) #Render Text
         pygame.display.flip() #Update Display
@@ -78,7 +78,7 @@ def Run():
             pygame.quit()
             sys.exit(0)
 
-        #Display Loding Information
+        #Display Loading Information
         InfoSurf = Debug_Font.render("Setting up game console...", False, (255,255,255))
         Video.PyGame.Screen.blit(InfoSurf, (0,15*2)) #Render Text
         pygame.display.flip() #Update Display
@@ -86,7 +86,7 @@ def Run():
         #Init Input Console / Chat Window
         Console.Manage.Init()
 
-        #Display Loding Information
+        #Display Loading Information
         InfoSurf = Debug_Font.render("Setting up local player...", False, (255,255,255))
         Video.PyGame.Screen.blit(InfoSurf, (0,15*3)) #Render Text
         pygame.display.flip() #Update Display
@@ -97,7 +97,7 @@ def Run():
         #Start Player Movement Monitor Thread
         thread.start_new_thread(Player.MainPlayer.Movement_Monitor_Thread, ())
 
-        #Display Loding Information
+        #Display Loading Information
         InfoSurf = Debug_Font.render("Starting server communication loop...", False, (255,255,255))
         Video.PyGame.Screen.blit(InfoSurf, (0,15*4)) #Render Text
         pygame.display.flip() #Update Display
@@ -105,7 +105,7 @@ def Run():
         #Start Connection Loop Thread
         thread.start_new_thread(Networking.Client.Connection_Loop, ())
 
-        #Display Loding Information
+        #Display Loading Information
         InfoSurf = Debug_Font.render("Enabling collision manager...", False, (255,255,255))
         Video.PyGame.Screen.blit(InfoSurf, (0,15*5)) #Render Text
         pygame.display.flip() #Update Display
@@ -113,7 +113,7 @@ def Run():
         #Startup the Collision Manager
         Collision.Manage.Setup()
 
-        #Display Loding Information
+        #Display Loading Information
         InfoSurf = Debug_Font.render("Writing server messages to game console...", False, (255,255,255))
         Video.PyGame.Screen.blit(InfoSurf, (0,15*6)) #Render Text
         pygame.display.flip() #Update Display
@@ -138,7 +138,7 @@ def Run():
            "4", "test_npc.lua", "test_npc/TestNPC.png", "test_npc/SpriteMap.sm")
         Test.Moving_Right = True
 
-        #Display Loding Information
+        #Display Loading Information
         InfoSurf = Debug_Font.render("Entering Game Loop...", False, (255,255,255))
         Video.PyGame.Screen.blit(InfoSurf, (0,15*7)) #Render Text
         pygame.display.flip() #Update Display
