@@ -48,6 +48,9 @@ Desktop = None
 #Status label for the login window
 StatusLbl = None
 
+#Background for Login Window
+Background = None
+
 #     _______________________
 # ___/ Function Declarations \__________________________________________________
 #Loads the Login screen for authentication
@@ -57,6 +60,7 @@ def Run():
     global RUN_LOGIN_WINDOW
     global Desktop
     global StatusLbl
+    global Background
 
     #Enable Python GC
     gc.enable()
@@ -72,6 +76,10 @@ def Run():
 
     #Update Window Caption To Current Ver
     pygame.display.set_caption(str("PyOnline - " + str(Networking.Client.CLIENT_VER)))
+    
+    #Load Background
+    if os.path.exists("data/images/Login_Background.png"):
+        Background = pygame.image.load("data/images/Login_Background.png")
 
     #Setup SPG(Simple Pygame GUI)
     Desktop = SPG.gui.Desktop()
@@ -140,7 +148,10 @@ def Run():
             #If text is removed, update Password_Input
             Password_Input = Password_Input[0:len(Password_Input)-1]
             Password_TextLen = len(PasswordTxt.text)
-
+            
+        #Render Background
+        if Background != None: #Make sure background image was loaded
+            Video.PyGame.Screen.blit(Background, (0,0))
 
         #Render Desktop for SPG
         Desktop.draw()
