@@ -122,7 +122,7 @@ def Run():
                         #Stop PyGame
                         pygame.quit()
 
-                        #Exit Completly
+                        #Exit Completely
                         sys.exit(0)
                         
                     if event.key == K_BACKSLASH:
