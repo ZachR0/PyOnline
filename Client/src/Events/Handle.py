@@ -23,7 +23,7 @@ def EventLoop():
     #Update KeyState
     Keystate = pygame.key.get_pressed()
 
-    #Used to keep track of how many times a directional key is heald down (for player movement)
+    #Used to keep track of how many times a directional key is held down (for player movement)
     Direction_Count = 0
 
     #Direction_Count Management
@@ -52,8 +52,32 @@ def EventLoop():
                     Video.PyGame.SetVideo(800, 640, True)
                 else:
                     Video.PyGame.SetVideo(800, 640, False)
+                    
+            if event.key == K_BACKQUOTE:
+                #Focus/Unfocus console
+                if Console.Manage.Console_Focused != True:
+                    #Focus
+                    Console.Manage.Console_Focused = True;
+                    
+                    #Display a screen message
+                    Console.Manage.ScreenWrite("Console Activated!")
+                
+                    #Change key input speed(good speed for typing)
+                    pygame.key.set_repeat(200,200)
+                else:
+                    #UnFocus
+                    Console.Manage.Console_Focused = False;
+                    
+                    #Display a screen message
+                    Console.Manage.ScreenWrite("Console NOT Activated!")
+                
+                    #Change key input speed(good speed for normal input)
+                    pygame.key.set_repeat(1,1)
+                
+                #Stop event loop
+                break;
 
-        #Check if console is focued; If so, allow it to handle events
+        #Check if console is focused; If so, allow it to handle events
         if Console.Manage.Console_Focused == True:
             Console.Manage.EventHandle(event)
         else:

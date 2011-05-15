@@ -2,6 +2,10 @@ import Networking.Client
 import Objects.Zone
 #     _________________
 # ___/ Module Imports  \________________________________________________________
+#System
+import time
+import thread
+
 #PyOnline
 import Video
 import Video.PyGame
@@ -31,6 +35,9 @@ Console_Font = None
 Console_XPOS = None
 Console_YPOS = None
 Console_Focused = None
+
+Screen_Message = None #Surface
+Screen_Message_Str = None #Message
 
 
 #     ________________________
@@ -302,7 +309,32 @@ def InputHandle():
     else:
         #Echo back to the console
         ChatMessage(str(Input), (61,255,255))
+        
+#Writes text to screen message buffer
+def ScreenWrite(message):
+    global Screen_Message_Str
+    #Set Message Buffer
+    Screen_Message_Str = str(message)
+    
+    #Start Thread
+    thread.start_new_thread(Screen_Write_Thread, ())
+    
+#Used by the ScreenWrite Function (Threaded)
+def Screen_Write_Thread():
+    global Screen_Message
+    global Screen_Message_Str
+    
+    #Load our font
+    Font = pygame.font.Font("data/fonts/VeraMoBd.ttf", 18)
 
+    #Render Zone_Name
+    Screen_Message = Font.render(str(Screen_Message_Str), False, (255,134,0))
+
+    #Allow the Zone_Name_Surface to be displayed for one second
+    time.sleep(1)
+
+    #Reset Zone_Name_Surface Data
+    Screen_Message = None
 
 #Handles Events when console is focued
 def EventHandle(event):

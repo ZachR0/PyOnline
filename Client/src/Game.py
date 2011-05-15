@@ -276,6 +276,10 @@ def Run():
             #Render Zone Name (If needed)
             if Objects.Zone.Zone_Name_Surface != None:
                 Video.PyGame.Screen.blit(Objects.Zone.Zone_Name_Surface, (Video.PyGame.Screen_Width / 2, Video.PyGame.Screen_Height / 3))
+                
+            #Render Screen Message (If needed)
+            if Console.Manage.Screen_Message != None:
+                Video.PyGame.Screen.blit(Console.Manage.Screen_Message, (Video.PyGame.Screen_Width / 2, Video.PyGame.Screen_Height / 3))
 
             #Render Game Console
             Console.Manage.Render()
