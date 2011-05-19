@@ -92,7 +92,7 @@ def Init():
     if XPOS == None and YPOS == None:
         XPOS = 300
         YPOS = 300
-    Move_Speed = 6
+    Move_Speed = 8
     Moving_Right = False
     Moving_Left = False
     Moving_Up = False

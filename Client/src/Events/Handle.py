@@ -69,7 +69,7 @@ def EventLoop():
                     Console.Manage.Console_Focused = False;
                     
                     #Display a screen message
-                    Console.Manage.ScreenWrite("Console NOT Activated!")
+                    Console.Manage.ScreenWrite("Console DeActivated!")
                 
                     #Change key input speed(good speed for normal input)
                     pygame.key.set_repeat(1,1)

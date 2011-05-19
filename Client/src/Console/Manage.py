@@ -302,10 +302,25 @@ def InputHandle():
                 Write(str("Your current cords: " + str(Player.MainPlayer.XPOS) + "," + str(Player.MainPlayer.YPOS)), (250,130,128))
             elif Parameters == "name":
                 Write(str("Current Player Name: " + str(Player.MainPlayer.Player_Name)), (255,0,0))
+            elif Parameters == "speed":
+                Write(str("Current Player Speed: " + str(Player.MainPlayer.Move_Speed)), (255,0,0))
             else:
                 Write("zone - Gets current zone info", (255,134,0))
                 Write("cords - Gets current player (x,y)", (255,134,0))
-                Write("name - Gets local player name", (255,134,0))
+                Write("name - Gets player name", (255,134,0))
+                Write("speed - Gets player movement speed", (255,134,0))
+                
+        if Command == "set":
+            if Parameters == "speed-up":
+                Player.MainPlayer.Move_Speed += 1
+                Write(str("Player Speed is now: " + str(Player.MainPlayer.Move_Speed)), (255,0,0))
+            elif Parameters == "speed-down":
+                Player.MainPlayer.Move_Speed -= 1
+                Write(str("Player Speed is now: " + str(Player.MainPlayer.Move_Speed)), (255,0,0))
+            else:
+                Write("speed-up - Increases player speed by one", (255,134,0))
+                Write("speed-down - Decreases player speed by one", (255,134,0))
+                
     else:
         #Echo back to the console
         ChatMessage(str(Input), (61,255,255))
