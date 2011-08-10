@@ -147,9 +147,8 @@ class ImageLoaderPygame(IImageLoader):
 
     def load_image_part(self, filename, x, y, w, h, colorkey=None):
         source_img = self.load_image(filename, colorkey)
-        ## ISSUE 4:
-        ##      The following usage seems to be broken in pygame (1.9.1.):
-        ##      img_part = self.pygame.Surface((tile_width, tile_height), 0, source_img)
+        source_img.set_colorkey(colorkey) #Set the colorkey, if there is one
+
         img_part = self.pygame.Surface((w, h), source_img.get_flags(), source_img.get_bitsize())
         source_rect = self.pygame.Rect(x, y, w, h)
 
@@ -159,6 +158,10 @@ class ImageLoaderPygame(IImageLoader):
             img_part.fill(colorkey)
             
         img_part.blit(source_img, (0, 0), source_rect)
+        
+        #Make sure the color key is set in memory, failsafe? Is this even needed?
+        if colorkey:
+            img_part.set_colorkey(colorkey, self.pygame.RLEACCEL)
         
         return img_part
 
@@ -1406,17 +1409,17 @@ def demo_pyglet(file_name):
         glLoadIdentity()
         # Move the "eye" to the current location on the map.
         glTranslatef(delta[0], delta[1], 0.0)
-        # TODO: [21:03]	thorbjorn: DR0ID_: You can generally determine the range of tiles that are visible before your drawing loop, which is much faster than looping over all tiles and checking whether it is visible for each of them.
-        # [21:06]	DR0ID_: probably would have to rewrite the pyglet demo to use a similar render loop as you mentioned
-        # [21:06]	thorbjorn: Yeah.
-        # [21:06]	DR0ID_: I'll keep your suggestion in mind, thanks
-        # [21:06]	thorbjorn: I haven't written a specific OpenGL renderer yet, so not sure what's the best approach for a tile map.
-        # [21:07]	thorbjorn: Best to create a single texture with all your tiles, bind it, set up your vertex arrays and fill it with the coordinates of the tiles currently on the screen, and then let OpenGL draw the bunch.
-        # [21:08]	DR0ID_: for each layer?
-        # [21:08]	DR0ID_: yeah, probably a good approach
-        # [21:09]	thorbjorn: Ideally for all layers at the same time, if you don't have to draw anything in between.
-        # [21:09]	DR0ID_: well, the NPC and other dynamic things need to be drawn in between, right?
-        # [21:09]	thorbjorn: Right, so maybe once for the bottom layers, then your complicated stuff, and then another time for the layers on top.
+        # TODO: [21:03]    thorbjorn: DR0ID_: You can generally determine the range of tiles that are visible before your drawing loop, which is much faster than looping over all tiles and checking whether it is visible for each of them.
+        # [21:06]    DR0ID_: probably would have to rewrite the pyglet demo to use a similar render loop as you mentioned
+        # [21:06]    thorbjorn: Yeah.
+        # [21:06]    DR0ID_: I'll keep your suggestion in mind, thanks
+        # [21:06]    thorbjorn: I haven't written a specific OpenGL renderer yet, so not sure what's the best approach for a tile map.
+        # [21:07]    thorbjorn: Best to create a single texture with all your tiles, bind it, set up your vertex arrays and fill it with the coordinates of the tiles currently on the screen, and then let OpenGL draw the bunch.
+        # [21:08]    DR0ID_: for each layer?
+        # [21:08]    DR0ID_: yeah, probably a good approach
+        # [21:09]    thorbjorn: Ideally for all layers at the same time, if you don't have to draw anything in between.
+        # [21:09]    DR0ID_: well, the NPC and other dynamic things need to be drawn in between, right?
+        # [21:09]    thorbjorn: Right, so maybe once for the bottom layers, then your complicated stuff, and then another time for the layers on top.
 
         batch.draw()
 

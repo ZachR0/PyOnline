@@ -113,31 +113,6 @@ class NPC_Obj:
 
             #Only continue if we are valid!
             if self.IS_VALID == True:
-                #TODO: Load spritesheet into memory, then based on the SpriteMap
-                #file, load each frame into memory, and get the proper Max and
-                #min values for each direction of movement(Animation stuff)
-                #TODO:Code a render function for this NPCObj Class
-                #TODO:Setup animation for the NPCObj Class - in a new thread?
-                #TODO:Setup basic AI -- Waypoint movement with automatic direction
-                #----At first just setup Waypoint movement with direction detection
-                #----WHILE IGNORING COLLISION, Add collision detection later?
-                #detection -- If the next x pos is greater than the current x pos
-                #then begin moving down, while checking for collision; If collision
-                #detected, then move the current y pos toward thew new y pos UNTIL
-                #the npc can begin movning down again without collision issues.
-                #The npc continues x movement down, while checking collision;
-                #Once the X pos is met, move the Y pos accordingly -- also while
-                #checking collsion. If collision is detected while moving the Y pos,
-                #then move the X pos again, first increasing, then check decreasing, until
-                #the y can be moved to where it needs to be. Then put the X pos back
-                #where it needs to be; again, while checking collision
-                #TODO:Setup Lua scripting support
-                #TODO:Setup Support for NPC scripts
-                #------- NPC.lua functions to be called by engine
-                #------------- on_init() - Called when NPC is finished being init by the engine
-                #------------- on_talk() - Called when player "talks" to NPC
-                #----------------Dialog stuff would go here, etc
-
                 self.Sprites = []
                 self.Max_Frame_Up = 0
                 self.Min_Frame_Up = -1

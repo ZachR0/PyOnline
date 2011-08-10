@@ -211,7 +211,7 @@ def ChatMessage(string, color):
     #Create new string with message data, and player name data
     tmpStr = str("[" + str(Player.MainPlayer.Player_Name) + "]:" + str(string))
 
-    #Surface array for each charater in "string"
+    #Surface array for each character in "string"
     Char_Surface = []
 
     #Create a surface for each character
@@ -351,7 +351,7 @@ def Screen_Write_Thread():
     #Reset Zone_Name_Surface Data
     Screen_Message = None
 
-#Handles Events when console is focued
+#Handles Events when console is focused
 def EventHandle(event):
     global Console_Surface
     global Console_Background_Surface

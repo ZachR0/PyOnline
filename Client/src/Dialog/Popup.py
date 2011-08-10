@@ -16,7 +16,7 @@ Dialog_Font = None
 def Display(Text):
     #Setup Variables
     global Dialog_Font
-
+    
     #Load Font
     Dialog_Font = pygame.font.Font("data/fonts/VeraMoBd.ttf", 14)
 
