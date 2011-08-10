@@ -146,11 +146,12 @@ class RequestHandler(SocketServer.BaseRequestHandler):
             #At this point, the client should have the player loaded locally
             print "[", self.Client_Username, "] Requesting Initial Animation Frame..."
 
-            #Get character's inital animation frame
-            data = self.request.recv(4096)
-            data = str(data.strip())
-            self.Client_CurrentFrame = Crypto.Data.Decrypt(data)
-            time.sleep(0.02)
+            ##Get character's inital animation frame
+            #data = self.request.recv(4096)
+            #data = str(data.strip())
+            #self.Client_CurrentFrame = Crypto.Data.Decrypt(data)
+            #time.sleep(0.02)
+            self.Client_CurrentFrame = 0 #Default Frame is Zero
 
             #Update Current Client List
             CONNECTED_CLIENTS[self.Client_Name] = Client(self.request, self.Client_Name,\
