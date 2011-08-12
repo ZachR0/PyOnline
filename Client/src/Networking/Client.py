@@ -372,6 +372,33 @@ def Connect():
                 SERVER_MESSAGES.append(str(Networking.Client.ReadData()))
         except:
             SERVER_MESSAGES.append(str("[ERROR GETTING SERVER MESSAGES!]"))
+            
+        #Get previous client data from the server
+        try:
+            Num = int(Networking.Client.ReadData())
+            for i in range(0, int(Num)):
+                data = Networking.Client.ReadData()
+                
+                #Get information for new connection
+                tmpData = str(data)
+                Data = []
+                while len(tmpData) > 1:
+                    Sep_Loc = tmpData.find(":")
+
+                    TmpData = tmpData[0:Sep_Loc]
+                    Data.append(TmpData[0:Sep_Loc])
+
+                    tmpData = tmpData[Sep_Loc+1:len(tmpData)]
+
+                #Data should be formatted as follows
+                #[0] - rnd_new ; [1] name ; [2] sheet ; [3] map [4] x ; [5] y ; [6] frame
+                OTHER_PLAYERS[str(Data[1])] = OtherPlayer(str(Data[1]), str(Data[2]),\
+                str(Data[3]), int(Data[4]), int(Data[5]), int(Data[6]))
+                
+                #print "[DEBUG]: Got previous client data for \"", str(Data[1]), "\"!"
+        
+        except:
+            pass
 
     except Exception, e:
         #Output exception
@@ -465,8 +492,8 @@ def Connection_Loop():
 
     #Send data before entering connection loop
     #Send the server our starting animation frame
-    Networking.Client.SendData(Player.MainPlayer.Current_Frame)
-    time.sleep(0.02) #Prevent server flood
+    #Networking.Client.SendData(Player.MainPlayer.Current_Frame)
+    #time.sleep(0.02) #Prevent server flood
 
     #Connection Loop (Only loop while we are connected)
     while isConnected == True:
@@ -500,24 +527,7 @@ def Connection_Loop():
                 #[0] - new_conn ; [1] name ; [2] sheet ; [3] map [4] x ; [5] y ; [6] frame
                 OTHER_PLAYERS[str(Data[1])] = OtherPlayer(str(Data[1]), str(Data[2]),\
                 str(Data[3]), int(Data[4]), int(Data[5]), int(Data[6]))
-
-            #Old Client Render
-            elif data[0:7] == "rnd_new":
-                #Get information for new connection
-                tmpData = str(data)
-                Data = []
-                while len(tmpData) > 1:
-                    Sep_Loc = tmpData.find(":")
-
-                    TmpData = tmpData[0:Sep_Loc]
-                    Data.append(TmpData[0:Sep_Loc])
-
-                    tmpData = tmpData[Sep_Loc+1:len(tmpData)]
-
-                #Data should be formatted as follows
-                #[0] - new_conn ; [1] name ; [2] sheet ; [3] map [4] x ; [5] y ; [6] frame
-                OTHER_PLAYERS[str(Data[1])] = OtherPlayer(str(Data[1]), str(Data[2]),\
-                str(Data[3]), int(Data[4]), int(Data[5]), int(Data[6]))
+                
 
             #Client Update (Movement)
             elif data[0:10] == "update_plr":
@@ -574,7 +584,7 @@ def Connection_Loop():
 
                 #Add message to console
                 Console.Manage.Write(str("[" + Data[1] + "]:" + Data[2]), (255,255,255))
-
+                
 
         except Exception, e:
             #print "[Client Connection Loop]: Exception caught: \"", str(e), "\""

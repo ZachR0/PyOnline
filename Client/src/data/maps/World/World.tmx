@@ -13,7 +13,7 @@
  </layer>
  <layer name="Ground" width="250" height="250">
   <data encoding="base64" compression="zlib">
-   eJzt3MFqAjEUQFH9UX/A7lrsyq6mXVW/uSlYUFrLPGMS53GEgyA4cXOD8wxu1qvVBgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAICLR6s1pnLt9+Kj4RrAdT0a1DmMpXPIT+eQn84hv58Gn4p9I9s7rfH9efena9k3YL7prJul0TnM81laOQQ8nxp7Cb4vas46xyudT2ev2wsgrte9ds065gFQR+eQ34jOd8Vr4FnnUKd357fM6Lc6hyq9OzePh/56dR79HSAyjwf+594XlinSrs5hmVp3bm+A8SKz7VvOqpt/w3i9zrjrHMaJzLZrzrebf8MyuNeG/HQO+ekc8mv1/zNv9g14GK1m874fwOO4x7nzv+b3Ooe83O9DfjqH/HQO+ekcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB++wLipuCZ
+   eJzt3MFOwkAYhdH6orwA7CC6qitwJTyzNdYEEzEMpTP0ekhOSEjK6OKbMD8Nq6euWwEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADw4zHXGvvhvQ+DtxnXAC6r0aDOoS2dQz6dQz6dQ77vBjeDfibrO63x+ff243vZN+B6+7NulkbncJ33oZVjge3Y2K7wulLXrHO60Pn+7HV7AZSrddaeso55AEyjc8jXovPnwUvBs85hmtqd3zKjX+scJqnduXk81Fer89LvAUrm8cDfnH1hmUra1Tks09yd2xugvZLZ9i33qpt/Q3u17nHXObRTMtuecn+7+Tcsg7M25NM55NM55Jvr92de7RvwMOaazft8AI/jHved/za/1znkct6HfDqHfDqHfDqHfDqHfDqHfDqHfDqHfDqHfDqHfDqHfDqHfDqHfDqHfDqHfDqHfDqHfDqHfDqHfDqHfDqHfDqHfDqHfDqHfDqHfDqHfDqHfDqHfDqHfDqHfDqHfDqHfDqHfDqHfDqHfDqHfDqHfDqHfDqH5em7Muux803hdb19AZo5dPW0/l/hvzp2ZbZjs7vC6446h8VwPod8Ood8Ood8Ood8Ood8Ood8Ood8Ood8Ood8OgcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD48gEHRgBi
   </data>
  </layer>
  <layer name="Primary Non-Collision" width="250" height="250">
@@ -28,7 +28,7 @@
  </layer>
  <layer name="Collision" width="250" height="250">
   <data encoding="base64" compression="zlib">
-   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
+   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
   </data>
  </layer>
  <objectgroup name="Sign Triggers" width="250" height="250">
@@ -56,8 +56,8 @@
  <objectgroup name="Spawn Point" width="250" height="250">
   <object name="Player Spawn" type="Spawn_Point" x="4414" y="4317" width="69" height="65"/>
  </objectgroup>
- <objectgroup name="Zones" width="250" height="250">
-  <object name="Housing District" type="Zone" x="3968" y="4032" width="1217" height="603">
+ <objectgroup name="Zones" width="250" height="250" visible="0">
+  <object name="Housing District" type="Zone" x="3968" y="4032" width="1206" height="596">
    <properties>
     <property name="Zone Name" value="Housing District"/>
    </properties>
@@ -67,7 +67,7 @@
     <property name="Zone Name" value="Wild Pokemon Research Area"/>
    </properties>
   </object>
-  <object name="Assistance District" type="Zone" x="3970" y="4642" width="1119" height="592">
+  <object name="Assistance District" type="Zone" x="3970" y="4642" width="1108" height="561">
    <properties>
     <property name="Zone Name" value="Assistance District"/>
    </properties>
@@ -82,9 +82,14 @@
     <property name="Zone Name" value="Wild Pokemon Research Area"/>
    </properties>
   </object>
-  <object name="Wooded Path" type="Zone" x="5092" y="4641" width="923" height="222">
+  <object name="Town1" type="Zone" x="5085" y="4841" width="1060" height="369">
    <properties>
-    <property name="Zone Name" value="Wooded Pathway"/>
+    <property name="Zone Name" value="Town1"/>
+   </properties>
+  </object>
+  <object name="Town1" type="Zone" x="5968" y="4614" width="194" height="595">
+   <properties>
+    <property name="Zone Name" value="Town1"/>
    </properties>
   </object>
  </objectgroup>
