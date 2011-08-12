@@ -144,7 +144,7 @@ class RequestHandler(SocketServer.BaseRequestHandler):
                 time.sleep(0.02) #Delay sending (prevent flood / allow processing time)
 
             #At this point, the client should have the player loaded locally
-            print "[", self.Client_Username, "] Requesting Initial Animation Frame..."
+            #print "[", self.Client_Username, "] Requesting Initial Animation Frame..."
 
             ##Get character's inital animation frame
             #data = self.request.recv(4096)
@@ -152,6 +152,28 @@ class RequestHandler(SocketServer.BaseRequestHandler):
             #self.Client_CurrentFrame = Crypto.Data.Decrypt(data)
             #time.sleep(0.02)
             self.Client_CurrentFrame = 0 #Default Frame is Zero
+            
+            #Send all of the previous client data to our new guest ^.^ (Make introductions xD)
+            print "[", self.Client_Username, "] Is Beginning Introductions..."
+            self.request.send(Crypto.Data.Encrypt(str(len(CONNECTED_CLIENTS)))) #Send length of current clients
+            for client in CONNECTED_CLIENTS:
+                #print "[DEBUG]: Sending client \"", str(client), "\" to \"", str(self.Client_Name), "\"!"
+                try:
+                    #Prepare data
+                    Connection_Data = str("rnd_new:" + str(CONNECTED_CLIENTS[client].Name)+\
+                    ":" + str(CONNECTED_CLIENTS[client].SpriteSheet) + ":" + str(CONNECTED_CLIENTS[client].SpriteMap)+\
+                    ":" + str(CONNECTED_CLIENTS[client].CurrentX) + ":" + str(CONNECTED_CLIENTS[client].CurrentY) + ":"+\
+                    str(self.Client_CurrentFrame) + ":")
+
+                    #Encrypt Data
+                    Connection_Data = Crypto.Data.Encrypt(Connection_Data)
+
+                    #Send
+                    self.request.send(str(Connection_Data))
+
+                    time.sleep(0.2) #Delay sending (prevent flood / allow processing time)
+                except:
+                    pass
 
             #Update Current Client List
             CONNECTED_CLIENTS[self.Client_Name] = Client(self.request, self.Client_Name,\
@@ -175,27 +197,6 @@ class RequestHandler(SocketServer.BaseRequestHandler):
 
                         #Send
                         CONNECTED_CLIENTS[client].Socket.send(str(Connection_Data))
-
-                        time.sleep(0.02) #Delay sending (prevent flood / allow processing time)
-                except:
-                    pass
-
-            #Send all of the previous client data to our new guest ^.^ (Make introductions xD)
-            print "[", self.Client_Username, "] Is Beginning Introductions..."
-            for client in CONNECTED_CLIENTS:
-                try:
-                    if client != self.Client_Name:
-                        #Prepare data
-                        Connection_Data = str("rnd_new:" + str(CONNECTED_CLIENTS[client].Name)+\
-                        ":" + str(CONNECTED_CLIENTS[client].SpriteSheet) + ":" + str(CONNECTED_CLIENTS[client].SpriteMap)+\
-                        ":" + str(CONNECTED_CLIENTS[client].CurrentX) + ":" + str(CONNECTED_CLIENTS[client].CurrentY) + ":"+\
-                        str(self.Client_CurrentFrame) + ":")
-
-                        #Encrypt Data
-                        Connection_Data = Crypto.Data.Encrypt(Connection_Data)
-
-                        #Send
-                        self.request.send(str(Connection_Data))
 
                         time.sleep(0.02) #Delay sending (prevent flood / allow processing time)
                 except:
