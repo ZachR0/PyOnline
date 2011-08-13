@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 #-------------------------------------------------------------------------------
-__version__ = "DEV-ALPHA 2.1.1"
+__version__ = "DEV-ALPHA 2.2.0"
 __author__ = "Zach Rogers - PyOnline Development Team"
 
 # Versioning scheme based on: http://en.wikipedia.org/wiki/Versioning#Designating_development_stage
