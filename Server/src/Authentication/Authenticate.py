@@ -22,7 +22,7 @@ def Begin(client_socket):
     ClientVer = Crypto.Data.Decrypt(data)
     
     #Check if the ClientVer is supported
-    if ClientVer != "DEV-ALPHA 2.1.1":
+    if ClientVer != "DEV-ALPHA 2.2.0":
         Auth_Status = False
         Auth_Message = str(str("Incorrect Client Version! - ") + str(data))
     else:
