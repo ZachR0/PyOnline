@@ -41,6 +41,9 @@ isConnected = False
 #Holds all messages that need to be displayed from the server (at login)
 SERVER_MESSAGES = []
 
+#Hols all NPC data
+NPC_DATA = []
+
 #Other player information
 OTHER_PLAYERS = {}
 
@@ -252,6 +255,7 @@ def Connect():
     global USERNAME
     global PASSWORD
     global SERVER_MESSAGES
+    global NPC_DATA
     global CLIENT_VER
 
     #Setup Client Socket
@@ -372,6 +376,15 @@ def Connect():
                 SERVER_MESSAGES.append(str(Networking.Client.ReadData()))
         except:
             SERVER_MESSAGES.append(str("[ERROR GETTING SERVER MESSAGES!]"))
+            
+        #Get NPC Data from the server
+        try:
+            Num = int(Networking.Client.ReadData())
+            for i in range(0, int(Num)):
+                NPC_DATA.append(str(Networking.Client.ReadData()))
+        except:
+            print "[WARNING]: There was a problem getting NPC data!"
+            NPC_DATA.append("NaN")
             
         #Get previous client data from the server
         try:

@@ -12,6 +12,7 @@ import Video.PyGame
 import Video.FPS
 import Maps.Tiled
 import Console.Manage
+import Networking.Client
 
 #PyGame
 import pygame
@@ -267,3 +268,7 @@ class NPC_Obj:
 
 #     ________________________
 # ___/ Function Declarations  \_________________________________________________
+
+#Loads NPC Data
+def LoadNPCData():
+    print Networking.Client.NPC_DATA

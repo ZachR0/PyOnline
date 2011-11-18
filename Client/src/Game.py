@@ -93,13 +93,21 @@ def Run():
 
         #Init Player
         Player.MainPlayer.Init()
+        
+        #Display Loading Information
+        InfoSurf = Debug_Font.render("Loading NPC Data...", False, (255,255,255))
+        Video.PyGame.Screen.blit(InfoSurf, (0,15*4)) #Render Text
+        pygame.display.flip() #Update Display
+
+        #Load NPC Data
+        NPC.Manage.LoadNPCData()
 
         #Start Player Movement Monitor Thread
         thread.start_new_thread(Player.MainPlayer.Movement_Monitor_Thread, ())
 
         #Display Loading Information
         InfoSurf = Debug_Font.render("Starting server communication loop...", False, (255,255,255))
-        Video.PyGame.Screen.blit(InfoSurf, (0,15*4)) #Render Text
+        Video.PyGame.Screen.blit(InfoSurf, (0,15*5)) #Render Text
         pygame.display.flip() #Update Display
 
         #Start Connection Loop Thread
@@ -107,7 +115,7 @@ def Run():
 
         #Display Loading Information
         InfoSurf = Debug_Font.render("Enabling collision manager...", False, (255,255,255))
-        Video.PyGame.Screen.blit(InfoSurf, (0,15*5)) #Render Text
+        Video.PyGame.Screen.blit(InfoSurf, (0,1565)) #Render Text
         pygame.display.flip() #Update Display
 
         #Startup the Collision Manager
@@ -115,7 +123,7 @@ def Run():
 
         #Display Loading Information
         InfoSurf = Debug_Font.render("Writing server messages to game console...", False, (255,255,255))
-        Video.PyGame.Screen.blit(InfoSurf, (0,15*6)) #Render Text
+        Video.PyGame.Screen.blit(InfoSurf, (0,15*7)) #Render Text
         pygame.display.flip() #Update Display
 
         #Display Server Messages
