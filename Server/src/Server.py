@@ -142,6 +142,19 @@ class RequestHandler(SocketServer.BaseRequestHandler):
             for i in range(0, len(SERVER_MESSAGES)):
                 self.request.send(Crypto.Data.Encrypt(str(SERVER_MESSAGES[i])))
                 time.sleep(0.02) #Delay sending (prevent flood / allow processing time)
+                
+            #Send NPC data to client
+            print "[", self.Client_Username, "] Sending NPC Data..."
+            #print MySQL.GetNPCData();
+            NPCData = MySQL.GetNPCData();
+            self.request.send(Crypto.Data.Encrypt(str(len(NPCData)))) #Send length of NPC data
+
+            time.sleep(0.02) #Delay sending (prevent flood / allow processing time)
+
+            for i in range(0, len(NPCData)):
+                self.request.send(Crypto.Data.Encrypt(str(NPCData[i])))
+                time.sleep(0.02) #Delay sending (prevent flood / allow processing time)
+            
 
             #At this point, the client should have the player loaded locally
             #print "[", self.Client_Username, "] Requesting Initial Animation Frame..."

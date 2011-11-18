@@ -308,26 +308,14 @@ def GetCharacterSpriteInfo(ID):
         Data = []
         count = 0
         for r in Cursor:
-           Data.append(r[int(count)])
-           count += 1
-
-        
-        
-        
-
+            Data.append(r[int(count)])
+            count += 1
         #Data[0] should be the name
         return str(Data[0])
+    
     except:
-        
-        
-        
-
         return None
-
     
-    
-    
-
     return None
 
 #Sets character last x cord based on char_id in Character_Table
@@ -383,10 +371,6 @@ def SetCharacterYPOS(ID, YPos):
         Command_Str = str("UPDATE " + str(Character_Table) + " SET Last_YPos = " + str(YPos) + " WHERE ID = '" + str(ID) + "'")
         Cursor.execute(Command_Str)
 
-        
-        
-        
-
     except:
         pass
 
@@ -426,3 +410,70 @@ def GetServerMessages():
 
     #Return messages
     return Messages
+
+#Get NPC Data
+def GetNPCData():
+    global MYSQL_SERVER
+    global MYSQL_PORT
+    global MYSQL_USERNAME
+    global MYSQL_PASS
+    global MYSQL_DB
+
+    global Account_Table
+    global Character_Table
+    global NPC_Table
+    global Server_Table
+    
+    NPCData = []
+
+    try:
+        #Connect to the MySQL database
+        Connection = pymysql.connect(host=MYSQL_SERVER, port=MYSQL_PORT, user=MYSQL_USERNAME, passwd=MYSQL_PASS, db=MYSQL_DB)
+        Connection.autocommit(True)
+        Cursor = Connection.cursor()
+
+        #Execute the MySQL command to get IDs
+        Command_Str = str("SELECT ID FROM " + str(NPC_Table))
+        Cursor.execute(Command_Str)
+
+        #Get data from the command
+        Data = Cursor.fetchall()
+        
+        #Go through each ID
+        for id in Data:
+            #Get NPC Data
+            Command_Str = str("SELECT Name FROM " + str(NPC_Table) + " WHERE ID = '" + str(id[0]) + "'")
+            Cursor.execute(Command_Str)
+            npcdata = Cursor.fetchall()
+            Name = npcdata[0]
+            
+            Command_Str = str("SELECT CurrentX FROM " + str(NPC_Table) + " WHERE ID = '" + str(id[0]) + "'")
+            Cursor.execute(Command_Str)
+            npcdata = Cursor.fetchall()
+            CurrentX = npcdata[0]
+            
+            Command_Str = str("SELECT CurrentY FROM " + str(NPC_Table) + " WHERE ID = '" + str(id[0]) + "'")
+            Cursor.execute(Command_Str)
+            npcdata = Cursor.fetchall()
+            CurrentY = npcdata[0]
+            
+            Command_Str = str("SELECT Waypoints FROM " + str(NPC_Table) + " WHERE ID = '" + str(id[0]) + "'")
+            Cursor.execute(Command_Str)
+            npcdata = Cursor.fetchall()
+            Waypoints = npcdata[0]
+            
+            Command_Str = str("SELECT ScriptFile FROM " + str(NPC_Table) + " WHERE ID = '" + str(id[0]) + "'")
+            Cursor.execute(Command_Str)
+            npcdata = Cursor.fetchall()
+            ScriptFile = npcdata[0]
+            
+            #Compile data for NPC
+            NPCData.append(str("ID:" + str(id[0]) + "-Name:" + str(Name[0]) + "-CurrentX:" + str(CurrentX[0]) + "-CurrentY:" + str(CurrentY[0]) + "-Waypoints:"\
+                           + str(Waypoints[0]) + "-ScriptFile:" + str(ScriptFile[0])))
+
+    except:
+        pass
+
+    #Return NPC data
+    return NPCData
+    
