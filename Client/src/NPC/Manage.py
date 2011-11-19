@@ -13,6 +13,7 @@ import Video.FPS
 import Maps.Tiled
 import Console.Manage
 import Networking.Client
+import NPC.Manage
 
 #PyGame
 import pygame
@@ -220,7 +221,7 @@ class NPC_Obj:
 
     #Renders NPC
     def Render(self):
-        Video.PyGame.Screen.blit(self.Sprites[self.Current_Frame], (int(self.Current_X)-Camera.Manage.CamX, int(self.Current_Y)-Camera.Manage.CamY))
+        Video.PyGame.Screen.blit(self.Sprites[int(self.Current_Frame)], (int(self.Current_X)-int(Camera.Manage.CamX), int(self.Current_Y)-int(Camera.Manage.CamY)))
 
 
     #Handles NPC Sprite Animation
@@ -264,6 +265,51 @@ class NPC_Obj:
                 self.Current_Frame -= 1
             else:
                 self.Current_Frame = self.Min_Frame_Up
+        
+    #Handles NPC Movement Waypoints
+    def Move(self):
+        while True:
+            #Go through each way point set
+            count = 0
+            for wayX in self.Waypoints_X:
+                #Get corrasponding waypoint Y
+                wayY = self.Waypoints_Y[count]
+                
+                #Move NPC until XCord matches wayX
+                if self.Current_X < int(wayX): #Move right?
+                    #Move right however long is needed
+                    while self.Current_X <= int(wayX):
+                        #Update Animation Direction
+                        self.Moving_Right = True
+                        self.Moving_Left = False
+                        self.Moving_Move_Up = False
+                        self.Moving_Down = False
+                        
+                        #Move
+                        self.Current_X += self.Move_Speed
+                        
+                        #Maintain FPS reg
+                        Video.FPS.Tick()
+                    
+                elif self.Current_X > int(wayX): #Move left?
+                    #Move left however long is needed
+                    while self.Current_X >= int(wayX):
+                        #Update Animation Direction
+                        self.Moving_Right = False
+                        self.Moving_Left = True
+                        self.Moving_Move_Up = False
+                        self.Moving_Down = False
+                        
+                        #Move
+                        self.Current_X -= self.Move_Speed
+                        
+                        #Maintain FPS reg
+                        Video.FPS.Tick()
+                
+                #Update count
+                count += 1
+            
+            
 
 
 #     ________________________
@@ -271,4 +317,50 @@ class NPC_Obj:
 
 #Loads NPC Data
 def LoadNPCData():
-    print Networking.Client.NPC_DATA
+    global NPC_Objects
+    
+    #Go through each NPC object in NPC_DATA and pull information
+    for npc in Networking.Client.NPC_DATA:
+        data = str(npc)
+        
+        #Get NPC data
+        Name = data[int(str(data).find("-Name:")) + 6 : int(str(data).find("-Health:"))]
+        Health = data[int(str(data).find("-Health:")) + 8 : int(str(data).find("-CurrentX:"))]
+        CurrentX = data[int(str(data).find("-CurrentX:")) + 10 : int(str(data).find("-CurrentY:"))]
+        CurrentY = data[int(str(data).find("-CurrentY:")) + 10 : int(str(data).find("-Waypoints:"))]
+        Waypoints = data[int(str(data).find("-Waypoints:")) + 11 : int(str(data).find("-MoveSpeed:"))]
+        MoveSpeed = data[int(str(data).find("-MoveSpeed:")) + 11 : int(str(data).find("-ScriptFile:"))]
+        ScriptFile = data[int(str(data).find("-ScriptFile:")) + 12 : int(str(data).find("-SpriteSheet:"))]
+        SpriteSheet = data[int(str(data).find("-SpriteSheet:")) + 13 : int(str(data).find("-SpriteMap:"))]
+        SpriteMap = data[int(str(data).find("-SpriteMap:")) + 11 : len(data)]
+        print Name, Health, CurrentX, CurrentY, Waypoints, MoveSpeed, ScriptFile, SpriteSheet, SpriteMap
+        
+        #Add NPC to NPC_Objects
+        tmpNPC = NPC.Manage.NPC_Obj(Name, Health, CurrentX, CurrentY, Waypoints, MoveSpeed, ScriptFile, SpriteSheet, SpriteMap)
+        tmpNPC.Moving_Right = True #Set Default movement - Needed?
+        
+        NPC_Objects.append(tmpNPC)
+        
+    #Start NPC movement threads
+    for npc in NPC_Objects:
+        thread.start_new_thread(npc.Move, ())
+        
+#Renders NPCs
+def RenderNPC():
+    global NPC_Objects
+    
+    #Go through each NPC and render
+    for npc in NPC_Objects:
+        npc.Render()
+        
+#Animates NPCs
+def AnimateNPC():
+    global NPC_Objects
+    
+    #Go through each NPC and animate
+    for npc in NPC_Objects:
+        npc.Animate()
+    
+    
+    
+    

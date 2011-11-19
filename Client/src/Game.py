@@ -142,9 +142,9 @@ def Run():
                 color = 0
 
         #Test NPC
-        Test = NPC.Manage.NPC_Obj("NPC Name", "100", "4430", "4389", "4700,4389;4630;4389;",\
-           "4", "test_npc.lua", "test_npc/TestNPC.png", "test_npc/SpriteMap.sm")
-        Test.Moving_Right = True
+        #Test = NPC.Manage.NPC_Obj("NPC Name", "100", "4430", "4389", "4700,4389;4630;4389;",\
+        #   "4", "test_npc.lua", "test_npc/TestNPC.png", "test_npc/SpriteMap.sm")
+        #Test.Moving_Right = True
 
         #Display Loading Information
         InfoSurf = Debug_Font.render("Entering Game Loop...", False, (255,255,255))
@@ -164,92 +164,95 @@ def Run():
             Player.MainPlayer.Animate()
 
             #Test NPC Animation
-            Test.Animate()
+            #Test.Animate()
+            
+            #Animate NPCs
+            NPC.Manage.AnimateNPC()
 
             #Test NPC Movement
-            if Test.Moving_Right:
-                if Test.Current_X < 4730:
-                    Test.Current_X += Test.Move_Speed
-                    Test.Can_Move_Right = True
-                    Test.Moving_Right = True
-                    Test.Can_Move_Down = False
-                    Test.Moving_Down = False
-                    Test.Can_Move_Left = False
-                    Test.Moving_Left = False
-                    Test.Can_Move_Up = False
-                    Test.Moving_Up = False
-                else:
-                    Test.Can_Move_Right = False
-                    Test.Moving_Right = False
-                    Test.Can_Move_Down = True
-                    Test.Moving_Down = True
-                    Test.Can_Move_Left = False
-                    Test.Moving_Left = False
-                    Test.Can_Move_Up = False
-                    Test.Moving_Up = False
+           # if Test.Moving_Right:
+           #     if Test.Current_X < 4730:
+           #         Test.Current_X += Test.Move_Speed
+           #         Test.Can_Move_Right = True
+           #         Test.Moving_Right = True
+           #         Test.Can_Move_Down = False
+           #         Test.Moving_Down = False
+           #         Test.Can_Move_Left = False
+           #         Test.Moving_Left = False
+           #         Test.Can_Move_Up = False
+           #         Test.Moving_Up = False
+           #     else:
+           #         Test.Can_Move_Right = False
+           #         Test.Moving_Right = False
+           #         Test.Can_Move_Down = True
+           #         Test.Moving_Down = True
+           #         Test.Can_Move_Left = False
+           #         Test.Moving_Left = False
+           #         Test.Can_Move_Up = False
+           #         Test.Moving_Up = False
 
-            elif Test.Moving_Down:
-                if Test.Current_Y < 4589:
-                    Test.Current_Y += Test.Move_Speed
-                    Test.Can_Move_Right = False
-                    Test.Moving_Right = False
-                    Test.Can_Move_Down = True
-                    Test.Moving_Down = True
-                    Test.Can_Move_Left = False
-                    Test.Moving_Left = False
-                    Test.Can_Move_Up = False
-                    Test.Moving_Up = False
-                else:
-                    Test.Can_Move_Right = False
-                    Test.Moving_Right = False
-                    Test.Can_Move_Down = False
-                    Test.Moving_Down = False
-                    Test.Can_Move_Left = True
-                    Test.Moving_Left = True
-                    Test.Can_Move_Up = False
-                    Test.Moving_Up = False
+           # elif Test.Moving_Down:
+           #     if Test.Current_Y < 4589:
+           #         Test.Current_Y += Test.Move_Speed
+           #         Test.Can_Move_Right = False
+           #         Test.Moving_Right = False
+           #         Test.Can_Move_Down = True
+           #         Test.Moving_Down = True
+           #         Test.Can_Move_Left = False
+           #         Test.Moving_Left = False
+           #         Test.Can_Move_Up = False
+           #         Test.Moving_Up = False
+           #     else:
+           #         Test.Can_Move_Right = False
+           #         Test.Moving_Right = False
+           #         Test.Can_Move_Down = False
+           #         Test.Moving_Down = False
+           #         Test.Can_Move_Left = True
+           #         Test.Moving_Left = True
+           #         Test.Can_Move_Up = False
+           #         Test.Moving_Up = False
 
-            elif Test.Moving_Left:
-                if Test.Current_X > 4430:
-                    Test.Current_X -= Test.Move_Speed
-                    Test.Can_Move_Right = False
-                    Test.Moving_Right = False
-                    Test.Can_Move_Down = False
-                    Test.Moving_Down = False
-                    Test.Can_Move_Left = True
-                    Test.Moving_Left = True
-                    Test.Can_Move_Up = False
-                    Test.Moving_Up = False
-                else:
-                    Test.Can_Move_Right = False
-                    Test.Moving_Right = False
-                    Test.Can_Move_Down = False
-                    Test.Moving_Down = False
-                    Test.Can_Move_Left = False
-                    Test.Moving_Left = False
-                    Test.Can_Move_Up = True
-                    Test.Moving_Up = True
+           # elif Test.Moving_Left:
+           #     if Test.Current_X > 4430:
+           #         Test.Current_X -= Test.Move_Speed
+           #         Test.Can_Move_Right = False
+           #         Test.Moving_Right = False
+           #         Test.Can_Move_Down = False
+           #         Test.Moving_Down = False
+           #         Test.Can_Move_Left = True
+           #         Test.Moving_Left = True
+           #         Test.Can_Move_Up = False
+           #         Test.Moving_Up = False
+           #     else:
+           #         Test.Can_Move_Right = False
+           #         Test.Moving_Right = False
+           #         Test.Can_Move_Down = False
+           #         Test.Moving_Down = False
+           #         Test.Can_Move_Left = False
+           #         Test.Moving_Left = False
+           #         Test.Can_Move_Up = True
+           #         Test.Moving_Up = True
 
-            elif Test.Moving_Up:
-                if Test.Current_Y > 4389:
-                    Test.Current_Y -= Test.Move_Speed
-                    Test.Can_Move_Right = False
-                    Test.Moving_Right = False
-                    Test.Can_Move_Down = False
-                    Test.Moving_Down = False
-                    Test.Can_Move_Left = False
-                    Test.Moving_Left = False
-                    Test.Can_Move_Up = True
-                    Test.Moving_Up = True
-                else:
-                    Test.Can_Move_Right = True
-                    Test.Moving_Right = True
-                    Test.Can_Move_Down = False
-                    Test.Moving_Down = False
-                    Test.Can_Move_Left = False
-                    Test.Moving_Left = False
-                    Test.Can_Move_Up = False
-                    Test.Moving_Up = False
+           # elif Test.Moving_Up:
+           #     if Test.Current_Y > 4389:
+           #         Test.Current_Y -= Test.Move_Speed
+           #         Test.Can_Move_Right = False
+           #         Test.Moving_Right = False
+           #         Test.Can_Move_Down = False
+           #         Test.Moving_Down = False
+           #         Test.Can_Move_Left = False
+           #         Test.Moving_Left = False
+           #         Test.Can_Move_Up = True
+           #         Test.Moving_Up = True
+           #     else:
+           #         Test.Can_Move_Right = True
+           #         Test.Moving_Right = True
+           #         Test.Can_Move_Down = False
+           #         Test.Moving_Down = False
+           #         Test.Can_Move_Left = False
+           #         Test.Moving_Left = False
+           #         Test.Can_Move_Up = False
+           #         Test.Moving_Up = False
 
 
             #Update Map/Level Camera (To Match Camera.Manage system)
@@ -275,7 +278,10 @@ def Run():
                         Networking.Client.OTHER_PLAYERS[str(player)].Render()
 
                     #Test NPC Render
-                    Test.Render()
+                    #Test.Render()
+                    
+                    #Render NPCs
+                    NPC.Manage.RenderNPC()
 
             #Render Current Dialog (If There is one)
             if Dialog.Global.CURRENT_DIALOG_SURFACE != None:
