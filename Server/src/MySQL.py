@@ -1,8 +1,6 @@
 import pymysql
 
-#MYSQL_SERVER = '5.22.194.34' #Hamachi
-MYSQL_SERVER = '127.0.0.1' #Localy (When server running on VPS)
-#MYSQL_SERVER = '66.11.227.39' #When server is running locally
+MYSQL_SERVER = '127.0.0.1' #Locally
 MYSQL_PORT = 3306
 MYSQL_USERNAME = 'pyonline_client'
 MYSQL_PASS = 'tbaj*$&dlja'
@@ -13,22 +11,25 @@ Character_Table = 'Characters'
 NPC_Table = 'NPC'
 Server_Table = 'Server'
 
-def Test():
-    global MYSQL_SERVER
-    global MYSQL_PORT
-    global MYSQL_USERNAME
-    global MYSQL_PASS
-    global MYSQL_DB
 
-    global Account_Table
-    global Character_Table
-    global NPC_Table
-    global Server_Table
+##########################################################################################################
+#Very old function used for testing MySQL stuff
+#def Test():
+#    global MYSQL_SERVER
+#    global MYSQL_PORT
+#    global MYSQL_USERNAME
+#    global MYSQL_PASS
+#    global MYSQL_DB
 
-    conn = pymysql.connect(host=MYSQL_SERVER, port=MYSQL_PORT, user=MYSQL_USERNAME, passwd=MYSQL_PASS, db=MYSQL_DB)
-    Connection.autocommit(True)
-    cur = conn.cursor()
-    cur.execute("SELECT Password FROM Accounts WHERE Username='Zach'")
+#    global Account_Table
+#    global Character_Table
+#    global NPC_Table
+#    global Server_Table
+
+#    conn = pymysql.connect(host=MYSQL_SERVER, port=MYSQL_PORT, user=MYSQL_USERNAME, passwd=MYSQL_PASS, db=MYSQL_DB)
+#    Connection.autocommit(True)
+#    cur = conn.cursor()
+#    cur.execute("SELECT Password FROM Accounts WHERE Username='Zach'")
     # print cur.description
     #r = cur.fetchall()
     #print r
@@ -36,16 +37,17 @@ def Test():
     #for r in cur:
     #   print r
 
-    Data = []
-    count = 0
-    for r in cur:
-       Data.append(r[int(count)])
-       count += 1
+#    Data = []
+#    count = 0
+#    for r in cur:
+#       Data.append(r[int(count)])
+#       count += 1
 
-    print "Password for Zach's account is:", Data[0]
+#    print "Password for Zach's account is:", Data[0]
 
-    cur.close()
-    conn.close()
+#    cur.close()
+#    conn.close()
+##########################################################################################################
 
 #Gets password from Account_Table based on username
 def GetPassword(Username):
@@ -115,22 +117,10 @@ def GetCharID(Username):
            Data.append(r[int(count)])
            count += 1
 
-        
-        
-        
-
         #Data[0] should be the ID
         return str(Data[0])
     except:
-        
-        
-        
-
         return None
-
-    
-    
-    
 
     return None
 
@@ -164,22 +154,10 @@ def GetCharacterName(ID):
            Data.append(r[int(count)])
            count += 1
 
-        
-        
-        
-
         #Data[0] should be the name
         return str(Data[0])
     except:
-        
-        
-        
-
         return None
-
-    
-    
-    
 
     return None
 
@@ -212,23 +190,10 @@ def GetCharacterXPOS(ID):
         for r in Cursor:
            Data.append(r[int(count)])
            count += 1
-
-        
-        
-        
-
-        #Data[0] should be the name
+        #Data[0] should be the xpos
         return str(Data[0])
     except:
-        
-        
-        
-
         return None
-
-    
-    
-    
 
     return None
 
@@ -261,23 +226,11 @@ def GetCharacterYPOS(ID):
         for r in Cursor:
            Data.append(r[int(count)])
            count += 1
-
-        
-        
-        
-
-        #Data[0] should be the name
+           
+        #Data[0] should be the ypos
         return str(Data[0])
     except:
-        
-        
-        
-
         return None
-
-    
-    
-    
 
     return None
 
@@ -310,7 +263,7 @@ def GetCharacterSpriteInfo(ID):
         for r in Cursor:
             Data.append(r[int(count)])
             count += 1
-        #Data[0] should be the name
+        #Data[0] should be the sprite info
         return str(Data[0])
     
     except:
@@ -340,10 +293,6 @@ def SetCharacterXPOS(ID, XPos):
         #Execute the MySQL command
         Command_Str = str("UPDATE " + str(Character_Table) + " SET Last_XPos = " + str(XPos) + " WHERE ID = '" + str(ID) + "'")
         Cursor.execute(Command_Str)
-
-        
-        
-        
         
     except:
         pass
