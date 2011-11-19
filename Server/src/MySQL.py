@@ -396,6 +396,11 @@ def GetNPCData():
             npcdata = Cursor.fetchall()
             Name = npcdata[0]
             
+            Command_Str = str("SELECT Health FROM " + str(NPC_Table) + " WHERE ID = '" + str(id[0]) + "'")
+            Cursor.execute(Command_Str)
+            npcdata = Cursor.fetchall()
+            Health = npcdata[0]
+            
             Command_Str = str("SELECT CurrentX FROM " + str(NPC_Table) + " WHERE ID = '" + str(id[0]) + "'")
             Cursor.execute(Command_Str)
             npcdata = Cursor.fetchall()
@@ -411,14 +416,30 @@ def GetNPCData():
             npcdata = Cursor.fetchall()
             Waypoints = npcdata[0]
             
+            Command_Str = str("SELECT MoveSpeed FROM " + str(NPC_Table) + " WHERE ID = '" + str(id[0]) + "'")
+            Cursor.execute(Command_Str)
+            npcdata = Cursor.fetchall()
+            MoveSpeed = npcdata[0]
+            
             Command_Str = str("SELECT ScriptFile FROM " + str(NPC_Table) + " WHERE ID = '" + str(id[0]) + "'")
             Cursor.execute(Command_Str)
             npcdata = Cursor.fetchall()
             ScriptFile = npcdata[0]
             
+            Command_Str = str("SELECT SpriteSheet FROM " + str(NPC_Table) + " WHERE ID = '" + str(id[0]) + "'")
+            Cursor.execute(Command_Str)
+            npcdata = Cursor.fetchall()
+            SpriteSheet = npcdata[0]
+            
+            Command_Str = str("SELECT SpriteMap FROM " + str(NPC_Table) + " WHERE ID = '" + str(id[0]) + "'")
+            Cursor.execute(Command_Str)
+            npcdata = Cursor.fetchall()
+            SpriteMap = npcdata[0]
+            
             #Compile data for NPC
-            NPCData.append(str("ID:" + str(id[0]) + "-Name:" + str(Name[0]) + "-CurrentX:" + str(CurrentX[0]) + "-CurrentY:" + str(CurrentY[0]) + "-Waypoints:"\
-                           + str(Waypoints[0]) + "-ScriptFile:" + str(ScriptFile[0])))
+            NPCData.append(str("ID:" + str(id[0]) + "-Name:" + str(Name[0]) + "-Health:" + str(Health[0])+ "-CurrentX:" + str(CurrentX[0]) + \
+                           "-CurrentY:" + str(CurrentY[0]) + "-Waypoints:" + str(Waypoints[0]) + "-MoveSpeed:" + str(MoveSpeed[0]) + \
+                           "-ScriptFile:" + str(ScriptFile[0]) + "-SpriteSheet:" + str(SpriteSheet[0])  + "-SpriteMap:" + str(SpriteMap[0])))
 
     except:
         pass
