@@ -22,9 +22,9 @@ def Begin(client_socket):
     ClientVer = Crypto.Data.Decrypt(data)
     
     #Check if the ClientVer is supported
-    if ClientVer != "DEV-ALPHA 2.2.0":
+    if ClientVer != "DEV-ALPHA 2.3.0":
         Auth_Status = False
-        Auth_Message = str(str("Incorrect Client Version! - ") + str(data))
+        Auth_Message = str(str("Incorrect Client Version! - ") + str(ClientVer))
     else:
         #Get the account username and password from client
         data = client_socket.recv(4096)
