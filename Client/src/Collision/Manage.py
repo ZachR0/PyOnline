@@ -274,7 +274,7 @@ def NPC_Trigger_Detection_Thread(start, end):
                 center=(Player.MainPlayer.XPOS, Player.MainPlayer.YPOS)))) == True:
                     
                     #Trigger NPC Collision
-                    NPC.Manage.NPC_Objects[i].onCollision()
+                    NPC.Manage.NPC_Objects[i].Trigger()
 
                     #Break from loop - faster checking
                     break

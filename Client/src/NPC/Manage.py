@@ -14,6 +14,8 @@ import Maps.Tiled
 import Console.Manage
 import Networking.Client
 import NPC.Manage
+import Dialog.Popup
+import Dialog.Global
 
 #PyGame
 import pygame
@@ -57,6 +59,7 @@ class NPC_Obj:
     Moving_Left = None
     Moving_Up = None
     Moving_Down = None
+    isMoving = None #Allows us to enable / disable NPC movement
     Can_Move_Up = None
     Can_Move_Down = None
     Can_Move_Left = None
@@ -76,6 +79,7 @@ class NPC_Obj:
             self.SpriteSheet_File = str("data/sprites/npc/" + str(NPCSpriteSheetFile))
             self.SpriteMap_File = str("data/sprites/npc/" + str(NPCSpriteMapFile))
             self.IS_VALID = False
+            self.isMoving = True #Moving by default
 
 
             #Pull waypoint data and place it into Waypoint array accordingly
@@ -269,80 +273,126 @@ class NPC_Obj:
     #Handles NPC Movement Waypoints
     def Move(self):
         while True:
-            #Go through each way point set
-            count = 0
-            for wayX in self.Waypoints_X:
-                #Get corrasponding waypoint Y
-                wayY = self.Waypoints_Y[count]
-                
-                #Move NPC until XCord matches wayX
-                if self.Current_X < int(wayX): #Move right?
-                    #Move right however long is needed
-                    while self.Current_X <= int(wayX):
-                        #Update Animation Direction
-                        self.Moving_Right = True
-                        self.Moving_Left = False
-                        self.Moving_Up = False
-                        self.Moving_Down = False
-                        
-                        #Move
-                        self.Current_X += self.Move_Speed
-                        
-                        #Maintain FPS reg
-                        Video.FPS.Tick()
+            #Are we suppose to be moving?
+            if self.isMoving == True:
+                #Go through each way point set
+                count = 0
+                for wayX in self.Waypoints_X:
+                    #Get corrasponding waypoint Y
+                    wayY = self.Waypoints_Y[count]
                     
-                elif self.Current_X > int(wayX): #Move left?
-                    #Move left however long is needed
-                    while self.Current_X >= int(wayX):
-                        #Update Animation Direction
-                        self.Moving_Right = False
-                        self.Moving_Left = True
-                        self.Moving_Up = False
-                        self.Moving_Down = False
+                    #Move NPC until XCord matches wayX
+                    if self.Current_X < int(wayX): #Move right?
+                        #Move right however long is needed
+                        while self.Current_X <= int(wayX):
+                            #Update Animation Direction
+                            self.Moving_Right = True
+                            self.Moving_Left = False
+                            self.Moving_Up = False
+                            self.Moving_Down = False
+                            
+                            #Should we still be moving?
+                            while self.isMoving == False:
+                                #Do nothing while we wait for permission to move
+                                #This allows the waypoint data to start where it left off
+                                pass
+                            
+                            #Move
+                            self.Current_X += self.Move_Speed
+                            
+                            #Maintain FPS reg
+                            Video.FPS.Tick()
                         
-                        #Move
-                        self.Current_X -= self.Move_Speed
+                    elif self.Current_X > int(wayX): #Move left?
+                        #Move left however long is needed
+                        while self.Current_X >= int(wayX):
+                            #Update Animation Direction
+                            self.Moving_Right = False
+                            self.Moving_Left = True
+                            self.Moving_Up = False
+                            self.Moving_Down = False
+                            
+                            #Should we still be moving?
+                            while self.isMoving == False:
+                                #Do nothing while we wait for permission to move
+                                #This allows the waypoint data to start where it left off
+                                pass
+                            
+                            #Move
+                            self.Current_X -= self.Move_Speed
+                            
+                            #Maintain FPS reg
+                            Video.FPS.Tick()
+                            
+                    #Move NPC until YCord matches wayY
+                    if self.Current_Y < int(wayY): #Move Down?
+                        #Move down however long is needed
+                        while self.Current_Y <= int(wayY):
+                            #Update Animation Direction
+                            self.Moving_Right = False
+                            self.Moving_Left = False
+                            self.Moving_Up = False
+                            self.Moving_Down = True
+                            
+                            #Should we still be moving?
+                            while self.isMoving == False:
+                                #Do nothing while we wait for permission to move
+                                #This allows the waypoint data to start where it left off
+                                pass
+                            
+                            #Move
+                            self.Current_Y += self.Move_Speed
+                            
+                            #Maintain FPS reg
+                            Video.FPS.Tick()
                         
-                        #Maintain FPS reg
-                        Video.FPS.Tick()
-                        
-                #Move NPC until YCord matches wayY
-                if self.Current_Y < int(wayY): #Move Down?
-                    #Move down however long is needed
-                    while self.Current_Y <= int(wayY):
-                        #Update Animation Direction
-                        self.Moving_Right = False
-                        self.Moving_Left = False
-                        self.Moving_Up = False
-                        self.Moving_Down = True
-                        
-                        #Move
-                        self.Current_Y += self.Move_Speed
-                        
-                        #Maintain FPS reg
-                        Video.FPS.Tick()
+                    elif self.Current_Y > int(wayY): #Move up?
+                        #Move up however long is needed
+                        while self.Current_Y >= int(wayY):
+                            #Update Animation Direction
+                            self.Moving_Right = False
+                            self.Moving_Left = False
+                            self.Moving_Up = True
+                            self.Moving_Down = False
+                            
+                            #Should we still be moving?
+                            while self.isMoving == False:
+                                #Do nothing while we wait for permission to move
+                                #This allows the waypoint data to start where it left off
+                                pass
+                            
+                            #Move
+                            self.Current_Y -= self.Move_Speed
+                            
+                            #Maintain FPS reg
+                            Video.FPS.Tick()
                     
-                elif self.Current_Y > int(wayY): #Move up?
-                    #Move up however long is needed
-                    while self.Current_Y >= int(wayY):
-                        #Update Animation Direction
-                        self.Moving_Right = False
-                        self.Moving_Left = False
-                        self.Moving_Up = True
-                        self.Moving_Down = False
-                        
-                        #Move
-                        self.Current_Y -= self.Move_Speed
-                        
-                        #Maintain FPS reg
-                        Video.FPS.Tick()
-                
-                #Update count
-                count += 1
+                    #Update count
+                    count += 1
                 
     #Called by Collision Manager upon collision with player
-    def onCollision(self):
-        print "[", self.Name, "] COLLISION WITH PLAYER!"
+    def Trigger(self):
+        #print "[", self.Name, "] COLLISION WITH PLAYER!"
+        
+        #Stop NPC Movement
+        self.isMoving = False
+        
+        #Stop NPC Animation
+        self.Moving_Right = False
+        self.Moving_Left = False
+        self.Moving_Up = False
+        self.Moving_Down = False
+        
+        #Display Dialog
+        Dialog.Global.CURRENT_DIALOG_SURFACE = Dialog.Popup.Display(str("[" + self.Name + "] You seem to be in my way..."))
+        
+    #Called by Events.Handle when player moves to detrigger anything caused by Trigger collision
+    def DeTrigger(self):
+        #Reset Dialog Surface
+        Dialog.Global.CURRENT_DIALOG_SURFACE = None
+        
+        #Enable NPC Movement
+        self.isMoving = True
             
             
 

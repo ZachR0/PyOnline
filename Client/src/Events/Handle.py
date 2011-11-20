@@ -10,6 +10,7 @@ import sys
 import Maps.Tiled
 import Video.PyGame
 import Player.MainPlayer
+import NPC.Manage
 
 #PyGame
 import pygame
@@ -96,11 +97,20 @@ def EventLoop():
 
                     #Networking.Client.SendData(str("mov_plr:" + str(Player.MainPlayer.XPOS)+ ":" + str(Player.MainPlayer.YPOS) + ":") + str(Player.MainPlayer.Current_Frame) + ":")
 
-                    #While checking object area collision, ignore any issues (Incase obj has been removed in another thread)
+                    #Map Object DeTriggering
                     try:
                         #DeTrigger ALL Level Objects on player movement
                         for i in range(0, len(Maps.Tiled.Level_Objects)):
                             Maps.Tiled.Level_Objects[i].DeTrigger()
+                    except:
+                        #Do nothing
+                        pass
+                    
+                    #NPC Object DeTriggering
+                    try:
+                        #DeTrigger ALL NPC Objects on player movement
+                        for i in range(0, len(NPC.Manage.NPC_Objects)):
+                            NPC.Manage.NPC_Objects[i].DeTrigger()
                     except:
                         #Do nothing
                         pass
@@ -117,11 +127,20 @@ def EventLoop():
 
                     #Networking.Client.SendData(str("mov_plr:" + str(Player.MainPlayer.XPOS)+ ":" + str(Player.MainPlayer.YPOS) + ":") + str(Player.MainPlayer.Current_Frame) + ":")
 
-                    #While checking object area collision, ignore any issues (Incase obj has been removed in another thread)
+                    #Map Object DeTriggering
                     try:
                         #DeTrigger ALL Level Objects on player movement
                         for i in range(0, len(Maps.Tiled.Level_Objects)):
                             Maps.Tiled.Level_Objects[i].DeTrigger()
+                    except:
+                        #Do nothing
+                        pass
+                    
+                    #NPC Object DeTriggering
+                    try:
+                        #DeTrigger ALL NPC Objects on player movement
+                        for i in range(0, len(NPC.Manage.NPC_Objects)):
+                            NPC.Manage.NPC_Objects[i].DeTrigger()
                     except:
                         #Do nothing
                         pass
@@ -138,11 +157,20 @@ def EventLoop():
 
                     #Networking.Client.SendData(str("mov_plr:" + str(Player.MainPlayer.XPOS)+ ":" + str(Player.MainPlayer.YPOS) + ":") + str(Player.MainPlayer.Current_Frame) + ":")
 
-                    #While checking object area collision, ignore any issues (Incase obj has been removed in another thread)
+                    #Map Object DeTriggering
                     try:
                         #DeTrigger ALL Level Objects on player movement
                         for i in range(0, len(Maps.Tiled.Level_Objects)):
                             Maps.Tiled.Level_Objects[i].DeTrigger()
+                    except:
+                        #Do nothing
+                        pass
+                    
+                    #NPC Object DeTriggering
+                    try:
+                        #DeTrigger ALL NPC Objects on player movement
+                        for i in range(0, len(NPC.Manage.NPC_Objects)):
+                            NPC.Manage.NPC_Objects[i].DeTrigger()
                     except:
                         #Do nothing
                         pass
@@ -159,11 +187,20 @@ def EventLoop():
 
                     #Networking.Client.SendData(str("mov_plr:" + str(Player.MainPlayer.XPOS)+ ":" + str(Player.MainPlayer.YPOS) + ":") + str(Player.MainPlayer.Current_Frame) + ":")
 
-                    #While checking object area collision, ignore any issues (Incase obj has been removed in another thread)
+                    #Map Object DeTriggering
                     try:
                         #DeTrigger ALL Level Objects on player movement
                         for i in range(0, len(Maps.Tiled.Level_Objects)):
                             Maps.Tiled.Level_Objects[i].DeTrigger()
+                    except:
+                        #Do nothing
+                        pass
+                    
+                    #NPC Object DeTriggering
+                    try:
+                        #DeTrigger ALL NPC Objects on player movement
+                        for i in range(0, len(NPC.Manage.NPC_Objects)):
+                            NPC.Manage.NPC_Objects[i].DeTrigger()
                     except:
                         #Do nothing
                         pass
