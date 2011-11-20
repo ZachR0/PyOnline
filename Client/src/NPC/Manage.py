@@ -282,7 +282,7 @@ class NPC_Obj:
                         #Update Animation Direction
                         self.Moving_Right = True
                         self.Moving_Left = False
-                        self.Moving_Move_Up = False
+                        self.Moving_Up = False
                         self.Moving_Down = False
                         
                         #Move
@@ -297,7 +297,7 @@ class NPC_Obj:
                         #Update Animation Direction
                         self.Moving_Right = False
                         self.Moving_Left = True
-                        self.Moving_Move_Up = False
+                        self.Moving_Up = False
                         self.Moving_Down = False
                         
                         #Move
@@ -305,9 +305,44 @@ class NPC_Obj:
                         
                         #Maintain FPS reg
                         Video.FPS.Tick()
+                        
+                #Move NPC until YCord matches wayY
+                if self.Current_Y < int(wayY): #Move Down?
+                    #Move down however long is needed
+                    while self.Current_Y <= int(wayY):
+                        #Update Animation Direction
+                        self.Moving_Right = False
+                        self.Moving_Left = False
+                        self.Moving_Up = False
+                        self.Moving_Down = True
+                        
+                        #Move
+                        self.Current_Y += self.Move_Speed
+                        
+                        #Maintain FPS reg
+                        Video.FPS.Tick()
+                    
+                elif self.Current_Y > int(wayY): #Move up?
+                    #Move up however long is needed
+                    while self.Current_Y >= int(wayY):
+                        #Update Animation Direction
+                        self.Moving_Right = False
+                        self.Moving_Left = False
+                        self.Moving_Up = True
+                        self.Moving_Down = False
+                        
+                        #Move
+                        self.Current_Y -= self.Move_Speed
+                        
+                        #Maintain FPS reg
+                        Video.FPS.Tick()
                 
                 #Update count
                 count += 1
+                
+    #Called by Collision Manager upon collision with player
+    def onCollision(self):
+        print "[", self.Name, "] COLLISION WITH PLAYER!"
             
             
 
@@ -360,7 +395,5 @@ def AnimateNPC():
     #Go through each NPC and animate
     for npc in NPC_Objects:
         npc.Animate()
-    
-    
     
     
